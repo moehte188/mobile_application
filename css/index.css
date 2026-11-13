@@ -1,0 +1,201 @@
+@charset "utf-8";
+
+html {
+  /* ブラウザのデフォルトが16px                        */
+  /* デフォルトの16pxの代わりに1emが10pxになるように調整 */
+  font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1.5;
+  color: rgb(73, 72, 72);
+  font-size: 1.6rem; /* 16px */
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, sans-serif;
+  text-align: center;
+  background-image: url(../img/moon.purple.jpg); /*★自分で画像を設定すること。*/
+  background-size: cover;
+}
+
+header,
+footer,
+h1,
+h2,
+h3,
+p,
+div,
+.container01,
+.filler01 {
+  margin: 0.2em 0em 0em 0em;
+  padding: 0.1em;
+}
+
+/*****************************/
+/* 見出し（みだし）           */
+/*****************************/
+header {
+  position: fixed; /*ヘッダーを固定（こてい）する*/
+  /* 基準（きじゅん）を画面（がめん）の左上（ひだりうえ）に */
+  top: 0em;
+  left: 0em;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(93, 87, 165);
+  z-index: 10;
+}
+h1 {
+  font: 2em Rajdhani, "Noto Sans JP";
+  color: rgb(101, 51, 209);
+  /* background-image: radial-gradient(
+    circle 248px at center,
+    #16d9e3 0%,
+    #30c7ec 47%,
+    #46aef7 100%
+  ); */
+  background: linear-gradient(135deg, #6dc4be, #c9d390, #6f7eb3);
+}
+
+h2 {
+  padding-left: 0.5em;
+  border-left: solid 0.5em rgb(184, 88, 180);
+  text-align: left;
+  color: rgb(117, 53, 144);
+}
+
+/*****************************/
+/* ページ                    */
+/*****************************/
+main {
+  z-index: 20;
+  margin-top: 3em;
+  overflow: auto; /* コンテンツの表示を自動に設定（スクロール） */
+}
+/*****************************/
+/* セクション(section)        */
+/*****************************/
+.container {
+  margin-top: 1em;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0.5em;
+  width: 80%;
+  border-radius: 0.5em 1.5em;
+  background-color: rgba(245, 245, 245, 0.6);
+  box-shadow: 0 0 0.5em rgb(73, 72, 72);
+}
+main > p {
+  font: 1.2em bold;
+}
+
+/*****************************/
+/* アンカー(anchor)           */
+/*****************************/
+a {
+  color: rgb(172, 97, 230);
+  font-weight: 900;
+  text-decoration: none;
+  /* https://developer.mozilla.org/ja/docs/Web/CSS/text-decoration */
+}
+
+/* mouseoverでグレースケール */
+a:hover {
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
+
+/*****************************/
+/* container  item           */
+/*****************************/
+.sub_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  font-size: 0.7em;
+}
+
+.item01 {
+  position: relative;
+  width: 6em;
+  height: 9em;
+  margin: 0;
+  line-height: 1em;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.item02 {
+  position: relative;
+  width: 6em;
+  height: 12em;
+  margin: 0;
+  line-height: 1em;
+  overflow: hidden;
+  opacity: 0;
+}
+.fade-in {
+  animation: complexSlideIn 2.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes complexSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(100px) scale(0.5);
+    filter: blur(5px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(-20px) scale(0.5);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+.item01 img,
+.item02 img {
+  width: 6em;
+  height: auto;
+}
+
+.item01 .img_fit {
+  width: auto;
+  height: 6em;
+  overflow: hidden;
+}
+
+/*****************************/
+/* フッター                   */
+/*****************************/
+footer > p {
+  /*position: absolute;/*←絶対位置*/
+  /*bottom: 5px; /*下に固定*/
+  position: relative;
+  width: 100%;
+  margin: 0px;
+  padding: 1px;
+  color: rgb(201, 93, 234);
+  font: 1em Rajdhani;
+  text-align: center;
+  background: rgba(247, 185, 98, 0.7);
+}
+/*******************************************************/
+/* レスポンシブ対応　メディアクエリを使ってCSSを切り替える */
+/* https://www.design-memo.com/coding/css-media-queries */
+/* mobileのときのスタイル */
+/*******************************************************/
+@media screen and (max-width: 480px) {
+  /* body{
+        background-size: auto 900px;
+    } */
+  h1 {
+    font-size: 1.5em;
+  }
+}
